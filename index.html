@@ -1,0 +1,533 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Wilson Tang | Personal Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="Design/images/favicons/apple-webicon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="Design/mages/favicons/apple-webicon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="Design/images/favicons/apple-webicon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="Design/images/favicons/apple-webicon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="Design/images/favicons/apple-webicon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="Design/images/favicons/apple-webicon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="Design/images/favicons/apple-webicon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="Design/images/favicons/apple-webicon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="Design/images/favicons/apple-webicon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="Design/images/favicons/android-webicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Design/images/favicons/webicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="Design/images/favicons/webicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Design/images/favicons/webicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-webicon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- favicons -->
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="Design/css/style.css">
+    <link rel="stylesheet" type="text/css" href="Design/css/custom-responsive-style.css">
+    <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script type="text/javascript" src="Design/script/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="Design/script/all-plugins.js"></script>
+    <script type="text/javascript" src="Design/script/plugin-active.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <script>
+        var PlotChart;
+         $(function () {
+            var ctx = document.getElementById('SkillChart').getContext('2d');
+            if (PlotChart != null)
+                PlotChart.destroy();
+            PlotChart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'bar',
+
+                // The data for our dataset
+                data: {
+                    labels: ["HTML","CSS","Javascript","C#","Python"],
+                    datasets: [{
+                        label: 'Skill',
+                        borderColor: 'rgb(255, 0, 0)',
+                        backgroundColor: 'rgba(255, 0, 0, 0.3)',
+                        borderWidth: '2',
+                        data: [2.5,1.5,2.5,3.5,3.5],
+                        fill:false
+                    }]
+                },
+                // Configuration options go here
+                options: {
+                    legend: {
+                        display: false,
+                        labels: {
+                            fontColor: 'rgb(255, 255, 255)'
+                        }
+                    },
+                    scales: {
+                      yAxes: [{
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 5,
+                            fontColor: "#000",
+                            fontSize: 20,
+                            maxTicksLimit: 10,
+                            userCallback: function (item) {
+                                if (item == 1)
+                                    return "Newbie";
+                                else if (item == 2)
+                                    return "Not Bad";
+                                else if (item == 3)
+                                    return "Good";
+                                else if (item == 4)
+                                    return "Excellent";
+                            },
+                        },
+                        //gridLines:{
+                        //  color: "#000",
+
+                        //  zeroLineColor :"#000",
+
+                        //},
+
+                      }],
+                      xAxes: [{
+                        ticks:{
+
+                            fontColor: "#000",
+                            fontSize: 20,
+                        },
+                        //gridLines:{
+                        //  color: "#000",
+
+                        //},
+                        categoryPercentage:1.0,
+                        barPercentage: 0.5
+                      }]
+                    },
+                }
+            });
+        });
+
+        //宣告預設表單內容為空 （你想要的話也可以加東西）
+        var initSubject='',initBody='';
+
+        //按下傳送按鈕後執行
+        function SendMail(){
+            var to = "thomas916715@gmail.com";//寫死的傳送對象 就是公司的信箱 不會顯示在網頁上
+            var name = nameText.value;//讀取ID為 nameTextuser 物件中的值
+            var email = emailText.value;
+            var tel = telText.value;
+            var subject = subText.value;
+    //把user填的資料都塞到 mail body 中
+            var body = ""+bodyText.value+'%0A%0A%0A';//%0A是換行 換了三行
+                body += "From：" + nameText.value + '%0A';
+                body += "Company:" + companyText.value + '%0A';
+                body += "Email："+emailText.value+'%0A';
+                body += "Tel："+telText.value;
+    //傳送的主要程式碼
+            mailTo.href="mailto:"+to+"?subject="+subject+"&body="+body;
+            mailTo.click();
+        }
+    //在body onload
+        function init(){
+            subText.value=initSubject;
+            toText.value=initTo;
+            bodyText.value=initBody;
+        }
+    </script>
+    
+    <!--<style>
+        #HeroBanner {
+            width: 100%;
+            background: url(../Design/images/IMG_20190615_174137.jpg)no-repeat 0 30% / cover;
+            background-attachment: fixed;
+        }
+    </style>-->
+</head>
+<body data-spy="scroll" data-target=".main-navigation" data-offset="150">
+    <section id="MainContainer">
+        <!-- Header starts here -->
+        <header id="Header">
+            <nav class="main-navigation">
+                <div class="container clearfix">
+                    <div class="site-logo-wrap">
+                        <a class="logo" href="#Home"><img src="Design/images/logo.png" alt="Design Studio"></a>
+                    </div>
+                    <a href="javascript:void(0)" class="menu-trigger hidden-lg-up"><span>&nbsp;</span></a>
+                    <div class="main-menu hidden-md-down">
+                        <ul class="menu-list">
+                            <li><a class="nav-link" href="javascript:void(0)" data-target="#HeroBanner">Home</a></li>
+                            <li><a class="nav-link" href="javascript:void(0)" data-target="#About">Resume</a></li>
+                            <li><a class="nav-link" href="javascript:void(0)" data-target="#Services">Skills</a></li>
+                            <li><a class="nav-link" href="javascript:void(0)" data-target="#Portfolio">Portfolio</a></li>
+                            <li><a class="nav-link" href="javascript:void(0)" data-target="#ContactUs">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mobile-menu hidden-lg-up">
+                    <ul class="mobile-menu-list">
+                        <li><a class="nav-link" href="javascript:void(0)" data-target="#HeroBanner">Home</a></li>
+                        <li><a class="nav-link" href="javascript:void(0)" data-target="#About">Resume</a></li>
+                        <li><a class="nav-link" href="javascript:void(0)" data-target="#Services">Skills</a></li>
+                        <li><a class="nav-link" href="javascript:void(0)" data-target="#Portfolio">Portfolio</a></li>
+                        <li><a class="nav-link" href="javascript:void(0)" data-target="#ContactUs">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Header ends here -->
+        <!-- Banner starts here -->
+        <section id="HeroBanner">
+            <div class="hero-content">
+                <h1>Hello! I'm Wilson Tang</h1>
+                <p style="font-size:20px">
+                    I have been a Software Engineer for 3 years and participated in R&D projects.<br />
+                    There is experience in GUI Design for 1 year & Web Design for 1 year during this period.<br />
+                    It's comfortable for me to work in a team or individually.<br />
+                    <!--Hope I can get more in-depth understanding of emerging technologies in the future.-->
+                </p>
+                <a href="#About" class="hero-cta">More About Me</a>
+            </div>
+        </section>
+        <!-- Banner ends here -->
+        <!-- About Us section starts here -->
+        <section id="About">
+            <div class="container">
+                <div class="about-wrapper">
+                    <h2>Education</h2>
+                    <h4 class="job-title">
+                        <strong>國立中央大學 通訊工程研究所</strong>
+                        <span class="right"><i class="fa fa-calendar" aria-hidden="true"> 2013 ~ 2016</i></span>
+                    </h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <h4 class="job-title">
+                        <strong>私立中原大學 電子工程學系</strong>
+                        <span class="right"><i class="fa fa-calendar" aria-hidden="true"> 2009 ~ 2013</i></span>
+                    </h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <h2>Experience</h2>
+                    <h4 class="job-title">
+                        <strong>緯創資通股份有限公司 軟體工程師</strong>
+                        <span class="right"><i class="fa fa-calendar" aria-hidden="true"> 2016 ~ Now </i></span>
+                    </h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+        </section>
+        <!-- About Us section ends here -->
+        <!-- Services section starts here -->
+        <section id="Services">
+            <div class="container">
+                <div class="block-heading">
+                    <h2>Skills</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+                <div class="services-wrapper">
+                    <div class="each-service">
+                        <div class="service-icon"><i class="fa fa-desktop" aria-hidden="true"></i></div>
+                        <h5 class="service-title">GUI Design</h5>
+                        <p class="service-description">UI設計/功能開發<br />WinForm、WPF、C#</p>
+                    </div>
+                    <div class="each-service">
+                        <div class="service-icon"><i class="fa fa-internet-explorer" aria-hidden="true"></i></div>
+                        <h5 class="service-title">Website Design</h5>
+                        <p class="service-description">前端設計/後端開發<br />ASP.NET、HTML、Javascript、CSS、C#</p>
+                    </div>
+                    <div class="each-service">
+                        <div class="service-icon"><i class="fa fa-database" aria-hidden="true"></i></div>
+                        <h5 class="service-title">Database Management</h5>
+                        <p class="service-description">資料庫建立/系統維護<br />MongoDB、C#、Python</p>
+                    </div>
+                </div>
+                <div class="form-group" id="ChartBlock" style="background-color:white">
+                    <canvas id="SkillChart" height="100" width="400"></canvas>
+                </div>
+            </div>
+        </section>
+        <!-- Services section ends here -->
+        <!-- Portfolio section starts here -->
+        <section id="Portfolio">
+            <div style="background-color: rgba(10,40,60,0.5);color: #fff;	padding: 95px 0;">
+                <div class="container">
+                    <div class="block-heading">
+                        <h2>Portfolio</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    </div>
+                    <h4 style="font-size:22px"><strong>GUI Design</strong></h4>
+                    <div class="portfolio-wrapper clearfix">
+                        <a class="each-portfolio" data-toggle="modal" href="#GUI_1">
+                            <img src="Portfolio/Title/VitalUI_1.png" alt="p-one">
+                            <div class="hover-cont-wrap">
+                                <div class="hover-cont-block">
+                                    <h5 class="p-title">Radar GUI</h5>
+                                    <div class="p-desc">
+                                        <div>User Interface for Data Capture & Information Display</div>
+                                        <div class="icon-div"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="each-portfolio" data-toggle="modal" href="#GUI_2">
+                            <img src="Portfolio/Title/HALUI_1.png" alt="p-one">
+                            <div class="hover-cont-wrap">
+                                <div class="hover-cont-block">
+                                    <h5 class="p-title">Assistive Device GUI</h5>
+                                    <div class="p-desc">
+                                        <div>R&D Interface for Testing & Debugging</div>
+                                        <div class="icon-div"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <h4 style="font-size:22px"><strong>Website Design</strong></h4>
+                    <div class="portfolio-wrapper clearfix">
+                        <a class="each-portfolio" data-toggle="modal" href="#Web_1">
+                            <img src="Portfolio/Title/RFWeb_1.png" alt="p-one">
+                            <div class="hover-cont-wrap">
+                                <div class="hover-cont-block">
+                                    <h5 class="p-title">RF Report Generator</h5>
+                                    <div class="p-desc">
+                                        <div>First Website Design for Data Process from Backend</div>
+                                        <div class="icon-div"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="each-portfolio" data-toggle="modal" href="#Web_2">
+                            <img src="Portfolio/Title/RFAWeb_1.png" alt="p-one">
+                            <div class="hover-cont-wrap">
+                                <div class="hover-cont-block">
+                                    <h5 class="p-title">RF Search Engine</h5>
+                                    <div class="p-desc">
+                                        <div>Search System for Project Status</div>
+                                        <div class="icon-div"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="each-portfolio" data-fancybox="gallery" href="Design/images/p-five.jpg">
+                            <img src="Design/images/p-five.jpg" alt="p-one">
+                            <div class="hover-cont-wrap">
+                                <div class="hover-cont-block">
+                                    <h5 class="p-title">Title</h5>
+                                    <div class="p-desc">
+                                        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+                                        <div class="icon-div"><i class="fa fa-search-plus" aria-hidden="true"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Detail Portfolio Modal-->
+                    <div class="modal fade" id="GUI_1" style="overflow-y: auto;">
+                        <div class="modal-dialog" style="max-width:80%">
+                            <div class="modal-content" style="vertical-align:middle;text-align:center">
+
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Radar GUI</h4>
+                                    <button type="button" class="close" data-dismiss="modal">x</button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="innerbox">
+                                        <img src="Portfolio/VitalUI_1.png" width="900" height="600">
+                                        <br /><br />
+                                        <img src="Portfolio/VitalUI_2.png" width="900" height="600">
+                                        <br /><br />
+                                        <img src="Portfolio/VitalUI_3.png" width="900" height="600"
+                                        <br /><br />
+                                        <img src="Portfolio/VitalUI_4.png" width="900" height="600">
+
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success"
+                                            data-dismiss="modal">
+                                        Close
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="GUI_2" style="overflow-y: auto;">
+                        <div class="modal-dialog" style="max-width:80%">
+                            <div class="modal-content" style="vertical-align:middle;text-align:center">
+
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Assistive Device GUI</h4>
+                                    <button type="button" class="close" data-dismiss="modal">x</button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="innerbox">
+                                        <img src="Portfolio/HALUI_1.png" width="900" height="600">
+                                        <br /><br />
+                                        <img src="Portfolio/HALUI_2.png" width="900" height="600">
+                                        <br /><br />
+                                        <img src="Portfolio/HALUI_3.png" width="900" height="600">
+                                        <br /><br />
+                                        <img src="Portfolio/HALUI_4.png" width="900" height="600">
+
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success"
+                                            data-dismiss="modal">
+                                        Close
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="Web_1" style="overflow-y: auto;">
+                        <div class="modal-dialog" style="max-width:80%">
+                            <div class="modal-content" style="vertical-align:middle;text-align:center">
+
+                                <div class="modal-header">
+                                    <h4 class="modal-title">RF Report Generator</h4>
+                                    <button type="button" class="close" data-dismiss="modal">x</button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="innerbox">
+                                        <img src="Portfolio/RFWeb_1.png" width="900" height="600">
+                                        <br /><br />
+                                        <img src="Portfolio/RFWeb_2.png" width="900" height="600">
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success"
+                                            data-dismiss="modal">
+                                        Close
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="Web_2" style="overflow-y: auto;">
+                        <div class="modal-dialog" style="max-width:80%">
+                            <div class="modal-content" style="vertical-align:middle;text-align:center">
+
+                                <div class="modal-header">
+                                    <h4 class="modal-title">RF Search Engine</h4>
+                                    <button type="button" class="close" data-dismiss="modal">x</button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="innerbox">
+                                        <img src="Portfolio/RFAWeb_1.png" width="900" height="600">
+                                        <br /><br />
+                                        <img src="Portfolio/RFAWeb_2.png" width="900" height="600">
+                                        <br /><br />
+                                        <img src="Portfolio/RFAWeb_3.png" width="900" height="600">
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success"
+                                            data-dismiss="modal">
+                                        Close
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio section ends here -->
+        <!--<section id="Testimonial">
+            <div class="testimonial-wrap">
+                <div class="container">
+                    <div class="block-heading">
+                        <h2>What Clients Say About Us</h2>
+                    </div>
+                    <ul class="testimonial-slider">
+                        <li>" I would like to thank Click and the team for the fantastic work<br> on content writing for my site. "</li>
+                        <li>" I'd say that the team is excellent and it is some of the best service<br> I have received both online and offline in a long time. "</li>
+                        <li>" It's been great working with you. The content is also great. I can certainly recommend your<br> services to others as cost effective services. "</li>
+                    </ul>
+                </div>
+            </div>
+        </section>-->
+        <!-- Contact us section starts here -->
+        <section id="ContactUs">
+            <div class="container contact-container">
+                <h3 class="contact-title">Get In Touch</h3>
+                <div class="contact-outer-wrapper">
+                    <div class="address-block">
+                        <p class="add-title">Contact Details</p>
+                        <div class="c-detail">
+                            <span class="c-icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span> <span class="c-info">Xizhi Dist,New Taipei City, Taiwan</span>
+                        </div>
+                        <div class="c-detail">
+                            <span class="c-icon"><i class="fa fa-phone" aria-hidden="true"></i></span> <span class="c-info">+886 921036024</span>
+                        </div>
+                        <div class="c-detail">
+                            <span class="c-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span> <span class="c-info">thomas916715@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="form-wrap">
+                        <p class="add-title">Send Me Message</p>
+                        <form>
+                            <div class="fname floating-label">
+                                <input type="text" class="floating-input" name="full name" id="nameText" required />
+                                <label for="full-name-field">Full Name</label>
+                            </div>
+                            <div class="email floating-label">
+                                <input type="email" class="floating-input" name="email" id="emailText" required />
+                                <label for="mail-field">Email</label>
+                            </div>
+                            <div class="contact floating-label">
+                                <input type="tel" class="floating-input" name="contact" id="telText" required />
+                                <label for="contact-us-field">Contact</label>
+                            </div>
+                            <div class="company floating-label">
+                                <input type="text" class="floating-input" name="company" id="companyText" />
+                                <label for="company-field">Company</label>
+                            </div>
+                            <div class="user-msg floating-label">
+                                <input type="text" class="floating-input" name="Subject" id="subText" />
+                                <label for="company-field">Subject</label>
+                            </div>
+                            <div class="user-msg floating-label">
+                                <textarea class="floating-input" name="user message" id="bodyText" required></textarea>
+                                <label for="user-msg-field" class="msg-label">Your Message</label>
+                            </div>
+                            <div class="submit-btn">
+                                <button type="submit" onclick="SendMail();">Send</button>
+                                <a id="mailTo"></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact us section ends here -->
+        <!-- Footer section starts here -->
+        <footer id="Footer">
+            <div class="container">
+                <div class="social-share">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+                <!--<div class="footer-logo-wrap">
+                    Design Studio &copy; 2018. Designed by <a href="https://www.position2.com/">Position2</a>
+                </div>-->
+            </div>
+        </footer>
+        <!-- Footer section ends here -->
+    </section>
+</body>
+</html>
