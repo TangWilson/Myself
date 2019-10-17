@@ -672,5 +672,29 @@ ul, li {
 	color: #fb3958;
 }
 
+.innerbox img {
+    margin: 5px 0;
+    vertical-align: top;
+}
+
+.innerbox_line div {
+    font-size: 0px;
+}
+/* -----------modal luna-------------- */
+.innerbox_set img {
+    margin: 0;
+    vertical-align: top;
+}
+
+/* -----------modal UNT內容-------------- */
+.innerbox_unt img {
+    display: inline-block;
+    margin: 5px 5px 0 0;
+}
+.innerbox_go img {
+    margin: 5px 5px 0 0;
+    vertical-align: top;
+}
+
 
 
