@@ -34,77 +34,27 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
     <script>
         var PlotChart;
-         $(function () {
-            var ctx = document.getElementById('SkillChart').getContext('2d');
-            if (PlotChart != null)
-                PlotChart.destroy();
-            PlotChart = new Chart(ctx, {
-                // The type of chart we want to create
-                type: 'bar',
-
-                // The data for our dataset
-                data: {
-                    labels: ["HTML","CSS","Javascript","C#","Python"],
-                    datasets: [{
-                        label: 'Skill',
-                        borderColor: 'rgb(255, 0, 0)',
-                        backgroundColor: 'rgba(255, 0, 0, 0.3)',
-                        borderWidth: '2',
-                        data: [2.5,1.5,2.5,3.5,3.5],
-                        fill:false
-                    }]
-                },
-                // Configuration options go here
-                options: {
-                    legend: {
-                        display: false,
-                        labels: {
-                            fontColor: 'rgb(255, 255, 255)'
-                        }
-                    },
-                    scales: {
-                      yAxes: [{
-                        ticks: {
-                            suggestedMin: 0,
-                            suggestedMax: 5,
-                            fontColor: "#000",
-                            fontSize: 20,
-                            maxTicksLimit: 10,
-                            userCallback: function (item) {
-                                if (item == 1)
-                                    return "Newbie";
-                                else if (item == 2)
-                                    return "Not Bad";
-                                else if (item == 3)
-                                    return "Good";
-                                else if (item == 4)
-                                    return "Excellent";
-                            },
-                        },
-                        //gridLines:{
-                        //  color: "#000",
-
-                        //  zeroLineColor :"#000",
-
-                        //},
-
-                      }],
-                      xAxes: [{
-                        ticks:{
-
-                            fontColor: "#000",
-                            fontSize: 20,
-                        },
-                        //gridLines:{
-                        //  color: "#000",
-
-                        //},
-                        categoryPercentage:1.0,
-                        barPercentage: 0.5
-                      }]
-                    },
+        $(function () {
+            //--------SkillChart Behavior-----------------------------------
+            if (document.body.clientWidth <= 750) {
+                document.getElementById("SkillChart").height = 300;
+                SkillPlot();
+            }
+            else
+                SkillPlot();
+            window.onresize = function () {
+                if (document.body.clientWidth <= 750) {
+                    PlotChart.destroy();
+                    document.getElementById("SkillChart").height = 300;
+                    SkillPlot();
                 }
-            });
+                else {
+                    PlotChart.destroy();
+                    document.getElementById("SkillChart").height = 150;
+                    SkillPlot();
+                }
+            }
+            //---------------------------------------------------------------
         });
 
         //宣告預設表單內容為空 （你想要的話也可以加東西）
@@ -133,15 +83,102 @@
             toText.value=initTo;
             bodyText.value=initBody;
         }
+        function SkillPlot() {
+            var ctx = document.getElementById('SkillChart').getContext('2d');
+            if (PlotChart != null)
+                PlotChart.destroy();
+            PlotChart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'bar',
+
+                // The data for our dataset
+                data: {
+                    labels: ["HTML", "CSS", "Javascript", "C#", "Python"],
+                    datasets: [{
+                        label: 'Skill',
+                        borderColor: 'rgb(255, 0, 0)',
+                        backgroundColor: 'rgba(255, 0, 0, 0.3)',
+                        borderWidth: '2',
+                        data: [2.5, 1.5, 2.5, 3.5, 3.5],
+                        fill: false
+                    }]
+                },
+                // Configuration options go here
+                options: {
+                    legend: {
+                        display: false,
+                        labels: {
+                            fontColor: 'rgb(255, 255, 255)'
+                        }
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                suggestedMin: 0,
+                                suggestedMax: 5,
+                                fontColor: "#000",
+                                fontSize: 20,
+                                maxTicksLimit: 10,
+                                userCallback: function (item) {
+                                    if (item == 1)
+                                        return "Newbie";
+                                    else if (item == 2)
+                                        return "Not Bad";
+                                    else if (item == 3)
+                                        return "Good";
+                                    else if (item == 4)
+                                        return "Excellent";
+                                },
+                            },
+                            //gridLines:{
+                            //  color: "#000",
+
+                            //  zeroLineColor :"#000",
+
+                            //},
+
+                        }],
+                        xAxes: [{
+                            ticks: {
+
+                                fontColor: "#000",
+                                fontSize: 20,
+                            },
+                            //gridLines:{
+                            //  color: "#000",
+
+                            //},
+                            categoryPercentage: 1.0,
+                            barPercentage: 0.5
+                        }]
+                    },
+                }
+            });
+        }
     </script>
     
-    <!--<style>
-        #HeroBanner {
-            width: 100%;
-            background: url(../Design/images/IMG_20190615_174137.jpg)no-repeat 0 30% / cover;
-            background-attachment: fixed;
+    <style>
+        /*----------HeadShot Behavior-----------*/
+        @media screen and (max-width: 1200px) and (min-width:990px){
+            #HeadShot {
+                width: 60%;
+                height: 30%;
+            }
         }
-    </style>-->
+        @media screen and (max-width: 990px) and (min-width:767px) {
+            #HeadShot {
+                width: 30%;
+                height: 10%;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            #HeadShot {
+                width: 100%;
+                height: 80%;
+            }
+        }
+        /*--------------------------------------*/
+    </style>
 </head>
 <body data-spy="scroll" data-target=".main-navigation" data-offset="150">
     <section id="MainContainer">
@@ -181,7 +218,7 @@
                 <h1>Hello! I'm Wilson Tang</h1>
                 <p style="font-size:20px">
                     I have been a Software Engineer for 3 years and participated in R&D projects.<br />
-                    There is experience in GUI Design for 1 year & Web Design for 1 year during this period.<br />
+                    During this period,I have gained the experience in GUI Design for 1 year & Web Design for 1 year.<br />
                     It's comfortable for me to work in a team or individually.<br />
                     <!--Hope I can get more in-depth understanding of emerging technologies in the future.-->
                 </p>
@@ -193,24 +230,44 @@
         <section id="About">
             <div class="container">
                 <div class="about-wrapper">
-                    <h2>Education</h2>
-                    <h4 class="job-title">
-                        <strong>國立中央大學 通訊工程研究所</strong>
-                        <span class="right"><i class="fa fa-calendar" aria-hidden="true"> 2013 ~ 2016</i></span>
-                    </h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <h4 class="job-title">
-                        <strong>私立中原大學 電子工程學系</strong>
-                        <span class="right"><i class="fa fa-calendar" aria-hidden="true"> 2009 ~ 2013</i></span>
-                    </h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <h2>Experience</h2>
-                    <h4 class="job-title">
-                        <strong>緯創資通股份有限公司 軟體工程師</strong>
-                        <span class="right"><i class="fa fa-calendar" aria-hidden="true"> 2016 ~ Now </i></span>
-                    </h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
+                    <div class="row">
+                        <div class="col-md-7 col-xs-12">
+                            <h2>Education</h2>
+                            <h4 class="job-title">
+                                <strong>國立中央大學 通訊工程研究所</strong>
+                                <span class="right"><i class="fa fa-calendar" aria-hidden="true"> 2013 ~ 2016</i></span>
+                            </h4>
+                            <p>
+                                在研究所時期，課業方面學習數位通訊、數位訊號處理、數位傳輸系統設計等等，也擔任FPGA、數位邏輯實驗課、電子學的助教，除了深入了解內容外，上實驗課時需要上台講解內容，更訓練我上台報告的膽識以及口條。而我也與實驗室的其他同學一同參與計劃「衛星訊號辨識與解調平台設計」，我在其中負責改寫如何將訊號完整解調的演算法，並同時運用到matlab和c語言，進而學到了訊號處理的相關應用以及matlab、C語言的程式設計，也獲得與業界廠商面談討論的經驗。論文方向主要是在探討預失真器在OFDM系統上的應用，OFDM技術廣泛應用於各種無線通訊系統中，擁有高頻寬效率的優點，但其高峰值對均值功率比的特性會讓訊號在經過功率放大器後造成非線性失真。在功率放大器前使用預失真器來讓放大器線性化，降低訊號的誤差是其中的一個解決方法，而目前希望藉由改善傳統型預失真器，提高補償訊號的效能。
+                            </p>
+                            <h4 class="job-title">
+                                <strong>私立中原大學 電子工程學系</strong>
+                                <span class="right"><i class="fa fa-calendar" aria-hidden="true"> 2009 ~ 2013</i></span>
+                            </h4>
+                            <p>
+                                在大學時期，我就讀於電子系，大一除了學習必修課程，增進數理方面的能力外，也有參加桌球、羽球社團來開拓自己的人際關係。大二便開始接觸電子的基礎專業課程，除了修習電子電路的理論外，也有理論應用的實驗課程。大三大四階段，我選擇進修通訊領域的課程，理論方面修過通訊系統、計算機網路等等，另外也有接觸C語言以及matlab的通訊系統模擬等程式設計。而在大學生涯即將邁入尾聲的階段，我決定參加研究所考試，最後也如願進入中央大學通訊工程研究所。
+                            </p>
+                            <h2>Experience</h2>
+                            <h4 class="job-title">
+                                <strong>緯創資通股份有限公司 軟體工程師</strong>
+                                <span class="right"><i class="fa fa-calendar" aria-hidden="true"> 2016 ~ Now </i></span>
+                            </h4>
+                            <p>
+                                在即將結束研究所的學業時，我決定透過研發替代役的身分投入職場，也順利的進入了緯創資通。這段期間中，我以軟體工程師的職稱參與一些內部的研發專案。
+                                首先接觸了機器人開發的研究，基於Linux系統上建立環境與架構，透過Robot Operating System(ROS)的平台，驅動感測器來與掃地機器人作結合，並運用SLAM演算法來
+                                實現Autonomous的概念，雖然此專案還尚未到那麼深入的研究，但對程式的架構也有些許的了解。
+                                在接下來的專案裡，我開始擔任上層應用面的腳色，為部門研發的Prototype設計圖像化使用者介面(GUI)，將Raw Data以及Information規劃呈現出來，方便內部RD們作測試參考，過程中接觸了C#、Winform、WPF等。
+                                而現今已然是資訊數位化的趨勢，部門想將歷年來RF測試的報告集中並建立資料庫，也讓我首次接觸網頁製作，整體架構以ASP.net為主，前端用HTML、Javascript、CSS，後端則用
+                                C#，學習以MongoDB作資料庫的管理。
+                                因為部門自由不拘束員工發展的風氣，讓我學習到好幾個領域的技術與知識，並同時訓練自己獨立作業以及團隊合作的精神，也期許自己可以更加的專精。
+                            </p>
+
+                        </div>
+                        <div class="col-md-5 col-xs-12" style="top:100px">
+                            <img src="Design/images/Head.png" width="100%" height="60%" id="HeadShot">
+                        </div>
+                    </div>
+                 </div>
             </div>
         </section>
         <!-- About Us section ends here -->
@@ -238,8 +295,9 @@
                         <p class="service-description">資料庫建立/系統維護<br />MongoDB、C#、Python</p>
                     </div>
                 </div>
+                <br/>
                 <div class="form-group" id="ChartBlock" style="background-color:white">
-                    <canvas id="SkillChart" height="100" width="400"></canvas>
+                    <canvas id="SkillChart" height="150" width="400"></canvas>
                 </div>
             </div>
         </section>
@@ -330,13 +388,13 @@
 
                                 <div class="modal-body">
                                     <div class="innerbox">
-                                        <img src="Portfolio/VitalUI_1.png">
+                                        <img src="Portfolio/VitalUI_1.png" width="80%">
                                         <br /><br />
-                                        <img src="Portfolio/VitalUI_2.png">
+                                        <img src="Portfolio/VitalUI_2.png" width="80%">
                                         <br /><br />
-                                        <img src="Portfolio/VitalUI_3.png">
+                                        <img src="Portfolio/VitalUI_3.png" width="80%">
                                         <br /><br />
-                                        <img src="Portfolio/VitalUI_4.png" >
+                                        <img src="Portfolio/VitalUI_4.png" width="80%" >
 
                                     </div>
                                 </div>
@@ -362,13 +420,13 @@
 
                                 <div class="modal-body">
                                     <div class="innerbox">
-                                        <img src="Portfolio/HALUI_1.png">
+                                        <img src="Portfolio/HALUI_1.png" width="80%">
                                         <br /><br />
-                                        <img src="Portfolio/HALUI_2.png">
+                                        <img src="Portfolio/HALUI_2.png" width="80%">
                                         <br /><br />
-                                        <img src="Portfolio/HALUI_3.png">
+                                        <img src="Portfolio/HALUI_3.png" width="80%">
                                         <br /><br />
-                                        <img src="Portfolio/HALUI_4.png">
+                                        <img src="Portfolio/HALUI_4.png" width="80%">
 
                                     </div>
                                 </div>
@@ -394,9 +452,9 @@
 
                                 <div class="modal-body">
                                     <div class="innerbox">
-                                        <img src="Portfolio/RFWeb_1.PNG">
+                                        <img src="Portfolio/RFWeb_1.PNG" width="80%">
                                         <br /><br />
-                                        <img src="Portfolio/RFWeb_2.png">
+                                        <img src="Portfolio/RFWeb_2.png" width="80%">
                                     </div>
                                 </div>
 
@@ -421,11 +479,11 @@
 
                                 <div class="modal-body">
                                     <div class="innerbox">
-                                        <img src="Portfolio/RFAWeb_1.PNG">
+                                        <img src="Portfolio/RFAWeb_1.PNG" width="80%">
                                         <br /><br />
-                                        <img src="Portfolio/RFAWeb_2.PNG">
+                                        <img src="Portfolio/RFAWeb_2.PNG" width="80%">
                                         <br /><br />
-                                        <img src="Portfolio/RFAWeb_3.PNG">
+                                        <img src="Portfolio/RFAWeb_3.PNG" width="80%">
                                     </div>
                                 </div>
 
