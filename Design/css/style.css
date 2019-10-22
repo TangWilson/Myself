@@ -454,7 +454,7 @@ ul, li {
 	position: relative;
 }
 #About .about-wrapper {
-	width: 70%;
+	width: 100%;
 	padding: 100px 50px 80px 10px;
 }
 #About .about-wrapper p:last-child {
@@ -468,7 +468,7 @@ ul, li {
 	position: absolute;
 	top:100px;
 	right: 20px;
-	background: url("../images/Head.png") no-repeat center / cover;
+	/*background: url("../images/Head.png") no-repeat center / cover;*/
 	width: 30%;
 	height: 65%;
 }
@@ -694,6 +694,14 @@ ul, li {
 .innerbox_go img {
     margin: 5px 5px 0 0;
     vertical-align: top;
+}
+.innerbox-cat p, .innerbox_go p, .innerbox p {
+    margin: 40px 0;
+}
+
+.innerbox-cat a {
+    text-decoration: none;
+    color: #fff;
 }
 
 
